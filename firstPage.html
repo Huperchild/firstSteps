@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<!--review "https://www.w3schools.com/howto/howto_js_portfolio_filter.asp" for more imforamtion-->
+<html lang="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Eyobed's Portfolio</title>
+  </head>
+  <style>
+    .socialLinks{
+      position: relative;
+      left: 500px;
+      bottom: -286px;
+    }
+    .fa {
+      padding: 12px;
+      font-size: 12px;
+      text-align: center;
+      text-decoration: none;
+      margin: 5px 2px;
+      position: relative;
+      bottom: 20px;
+      left: 140px;
+    }
+    .fa:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    .fa-linkedin {
+      background-color: rgb(89, 149, 226);
+      color: white;
+      border-radius: 30%;
+    }
+    .fa-github {
+      background-color: rgb(0, 0, 0);
+      color: white;
+      border-radius: 30%;
+    }
+    .confirm {
+      width: 10px;
+      height: 20px;
+    }
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-image: url(images/217da299cc918fad9b76eb99e4bb75b3.gif);
+      padding: 20px;
+      font-family: Arial;
+    }
+
+    /* Center website */
+    .main {
+      background-color: white;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 50px;
+      word-break: break-all;
+    }
+
+    .row {
+      margin: 10px 20px;
+    }
+
+    /* Add padding BETWEEN each column */
+    .row,
+    .row > .column {
+      padding: 8px;
+    }
+
+    /* Create four equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 25%;
+      display: none;
+    }
+
+    /* Clear floats after rows */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Content */
+    .content {
+      background-color: white;
+      padding: 10px;
+    }
+
+    /* Responsive layout - makes a two column-layout instead of four columns */
+    @media screen and (max-width: 900px) {
+      .column {
+        width: 50%;
+      }
+    }
+
+    /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+      .column {
+        width: 100%;
+      }
+    }
+    /* The "show" class is added to the filtered elements */
+    .show {
+      display: block;
+    }
+
+    /* postion of the menu*/
+    .btnposition {
+      position: relative;
+      top: -38px;
+      float: right;
+    }
+    /* Style the buttons */
+    .btn {
+      border: none;
+      outline: none;
+      padding: 12px 16px;
+      background-color: white;
+      cursor: pointer;
+    }
+
+    /* Add a grey background color on mouse-over */
+    .btn:hover {
+      background-color: #ddd;
+    }
+
+    /* Add a dark background color to the active button */
+    .btn.active {
+      background-color: #666;
+      color: white;
+    }
+     /* Style inputs with type="text", select elements and textareas */
+    input[type=text], select, textarea {
+      width: 100%; /* Full width */
+      padding: 12px; /* Some padding */ 
+      border: 1px solid #ccc; /* Gray border */
+      border-radius: 4px; /* Rounded borders */
+      box-sizing: border-box; /* Make sure that padding and width stays in place */
+      margin-top: 6px; /* Add a top margin */
+      margin-bottom: 16px; /* Bottom margin */
+      resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+    }
+
+    /* Style the submit button with a specific background color etc */
+    input[type=submit] {
+      background-color: #04AA6D;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* When moving the mouse over the submit button, add a darker green color */
+    input[type=submit]:hover {
+      background-color: #45a049;
+    }
+
+    /* Add a background color and some padding around the form */
+    .container {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+    } 
+  </style>
+  <body>
+    <!--To change body's background, go to '.body' under style-->
+    <div class="main">
+      <h1>Eyobed Gemechu</h1>
+      <div id="myBtnContainer" class="btnposition">
+        <button class="btn active" onclick="filterSelection('all')">
+          Home
+        </button>
+        <button class="btn" onclick="filterSelection('Profile')">
+          Portfolio
+        </button>
+        <button class="btn" onclick="filterSelection('Socials')">
+          Socials
+        </button>
+      </div>
+      <hr>
+      <h3>my protfolio</h3>
+      <p>something something this is my Portfolio</p>
+
+      <!-- profile paragraphs'about' or protfolio-->
+      <div class="row">
+        <div class="column Profile">
+          <div class="content">
+            <!--change the width of image to 100% after changing the css, note img is franklin logo-->
+            <img
+              src="franklin-university.png"
+              alt="franklin University"
+              width="60%"
+            />
+            <h2>Student at Franklin University</h2>
+            <p>a student at franklin since blah blah blah</p>
+          </div>
+        </div>
+        <div class="column Profile">
+          <div class="content">
+              <img src="images/istockphoto-1081645094-1024x1024.jpg" alt="image-placeholder" width="80%">
+              <h2>title of WIP project</h2>
+              <p>description of WIP Project in the works that is undercurrent construction</p>
+          </div>
+        </div>
+        <div class="column Profile">
+          <div class="content">
+              <img src="images/istockphoto-1081645094-1024x1024.jpg" alt="image-placeholder" width="80%">
+              <h2>title of WIP project</h2>
+              <p>description of WIP Project in the works that is undercurrent construction</p>
+          </div>
+        </div>
+        <div class="column Profile">
+          <div class="content">
+            <img
+              src="book-hand-drawn-sketch.png"
+              alt="Resume"
+              style="width: 100%"
+            />
+            <h2>this is showing my Resume</h2>
+            <p>
+              Worked at Spectrum for 7 months! among other things! Click on my
+              resume to see more!
+            </p>
+            <a href="Resume - Copy.pdf" download
+              ><p name="content">Resume</p></a
+            >
+            
+          </div>
+        </div>
+        <!--social links-->
+        <div class="column Socials">
+          <form action="action_page.php">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name..">
+            <label for="subject">Comment</label>
+            <textarea id="subject" name="Comment" placeholder="Comment something.." style="height:200px"></textarea>
+            <input type="submit" value="Submit">
+          </form>
+        </div>
+        <div class="column Socials">
+          <div class="socialLinks">
+            <!-- links 'socials'-->
+            <p style="font-size: small;">
+              These are my Socials! Please, don't hesitate to reach out!
+            </p>
+              <a href="https://www.linkedin.com/in/eyobedgemechu/" class="fa fa-linkedin" target="_blank"></a>
+              <a style="font-size: 24px" href="https://github.com/Huperchild" target="_blank">
+              <i class="fa fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <script>
+      filterSelection("all"); // Execute the function and show all columns
+      function filterSelection(c) {
+        var x, i;
+        x = document.getElementsByClassName("column");
+        if (c == "all") c = "";
+        // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+        for (i = 0; i < x.length; i++) {
+          w3RemoveClass(x[i], "show");
+          if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+        }
+      }
+
+      // Show filtered elements
+      function w3AddClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          if (arr1.indexOf(arr2[i]) == -1) {
+            element.className += " " + arr2[i];
+          }
+        }
+      }
+
+      // Hide elements that are not selected
+      function w3RemoveClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          while (arr1.indexOf(arr2[i]) > -1) {
+            arr1.splice(arr1.indexOf(arr2[i]), 1);
+          }
+        }
+        element.className = arr1.join(" ");
+      }
+
+      // Add active class to the current button (highlight it)
+      var btnContainer = document.getElementById("myBtnContainer");
+      var btns = btnContainer.getElementsByClassName("btn");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+          var current = document.getElementsByClassName("active");
+          current[0].className = current[0].className.replace(" active", "");
+          this.className += " active";
+        });
+      }
+    </script>
+  </body>
+</html>
